@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--jpa 설정파일 파일명, 위치 중요-->
+<!-- jpa 2.2 버전 -->
+<persistence version="2.2"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!--jpa이름 -->
+    <persistence-unit name="hello">
+        <properties>
+            <!-- 필수 속성 - db 접근 정보 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <!--방언 설정 -> 오라클 쓰면 뒤에 H2Dialecct 부분에 오라클 이라고 써주면 된다 -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- 옵션 -->
+            <!--쿼리보여줌 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!--이러면 그전에 있던 테이블 지우고 자동으로 테이블 만들어줌 -->
+            <!--create-drop하면 create다하고 종료 시점에 테이블 drop -->
+            <!-- value = "update" create말고 alter하고 싶을떄 -->
+            <!-- value = "validate" 정상 맵핑됬는지 확인하는거 -->
+
+            <property name="hibernate.jdbc.batch_size" value="10" /> <!-- 10개 모아서 던진다 -->
+        </properties>
+    </persistence-unit>
+</persistence>
